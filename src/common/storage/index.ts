@@ -1,11 +1,13 @@
 import Storage from './storage';
 
-export const StorageKeys = Object.freeze({
+export const LoginStorageKeys = Object.freeze({
   TOKEN: 'TOKEN', // 登录鉴权 token
+  REFRESH_TOKEN: 'REFRESH_TOKEN', // 刷新 token
+  LOGIN_STATUS: 'LOGIN_STATUS', // 登录状态
+  USER_INFO: 'USER_INFO', // 登录的用户信息
 });
 
-// 登录态存储
-export const LoginStorage = new Storage({
+// 登录相关的存储
+export const loginStorage = new Storage({
   namespace: 'LOGIN',
-  expire: 24 * 60,
 });

@@ -15,12 +15,12 @@ import { GlobalContext } from './context';
 import PageLayout from './layout';
 import Login from './pages/login';
 // tools
-import checkLogin from './utils/checkLogin';
 import changeTheme from './utils/changeTheme';
 import { componentConfig } from './config/component.config';
 import useStorage from './utils/useStorage';
 import './style/global.less';
 import './mock';
+import { loginModule } from './modules/login-module/login-module';
 
 const store = createStore(rootReducer);
 
@@ -56,8 +56,8 @@ function Index() {
 
   // 登录校验
   useEffect(() => {
-    if (checkLogin()) {
-      fetchUserInfo();
+    if (loginModule.checkLogin()) {
+      // fetchUserInfo()
     } else if (window.location.pathname.replace(/\//g, '') !== 'login') {
       window.location.pathname = '/login';
     }

@@ -29,7 +29,7 @@ export default class Storage {
    * 设置存储
    * @param key
    * @param value
-   * @param expire 过期时间，单位为 分钟
+   * @param expire 过期时间，单位为 分钟，默认值为 一 天
    * @returns
    */
   setItem(key: string, value: unknown, expire: number = 24 * 60) {

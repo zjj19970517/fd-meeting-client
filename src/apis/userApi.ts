@@ -1,7 +1,7 @@
 import { post } from '@/common/fetch';
 import { StandardResponse } from '@/common/fetch/types';
 
-export interface UserInfo {
+export interface LoginResult {
   userInfo: {
     id: number;
     username: number;
@@ -30,7 +30,7 @@ const userApi = {
     // const config: CustomConfig = {
     //   closeAutoErrorTip: false
     // }
-    return post<StandardResponse<UserInfo>>('/api/user/login', {
+    return post<StandardResponse<LoginResult>>('/api/user/login', {
       username,
       password,
     });

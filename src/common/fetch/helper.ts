@@ -1,6 +1,6 @@
 import { Message } from '@arco-design/web-react';
 
-import { LoginStorage, StorageKeys } from '@/common/storage/index';
+import { loginStorage, LoginStorageKeys } from '@/common/storage/index';
 import { bizErrorCodeMap } from '@/common/fetch/codes/biz-error-codes';
 import { CustomConfig } from './types';
 
@@ -11,7 +11,7 @@ export const handleChangeRequestHeader = (config) => {
 
 // 鉴权
 export const handleConfigureAuth = (config) => {
-  const token = LoginStorage.getItem(StorageKeys.TOKEN);
+  const token = loginStorage.getItem(LoginStorageKeys.TOKEN);
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
