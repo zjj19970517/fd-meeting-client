@@ -1,20 +1,25 @@
-import './style/global.less';
-import React, { useEffect } from 'react';
+import axios from 'axios';
 import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ConfigProvider } from '@arco-design/web-react';
 import zhCN from '@arco-design/web-react/es/locale/zh-CN';
 import enUS from '@arco-design/web-react/es/locale/en-US';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import axios from 'axios';
+
+// store & context
 import rootReducer from './store';
-import PageLayout from './layout';
 import { GlobalContext } from './context';
+// component
+import PageLayout from './layout';
 import Login from './pages/login';
+// tools
 import checkLogin from './utils/checkLogin';
 import changeTheme from './utils/changeTheme';
+import { componentConfig } from './config/component.config';
 import useStorage from './utils/useStorage';
+import './style/global.less';
 import './mock';
 
 const store = createStore(rootReducer);
@@ -34,7 +39,9 @@ function Index() {
     }
   }
 
+  // 获取用户信息
   function fetchUserInfo() {
+    // TODO:
     store.dispatch({
       type: 'update-userInfo',
       payload: { userLoading: true },
@@ -47,6 +54,7 @@ function Index() {
     });
   }
 
+  // 登录校验
   useEffect(() => {
     if (checkLogin()) {
       fetchUserInfo();
@@ -55,6 +63,7 @@ function Index() {
     }
   }, []);
 
+  // 主题切换
   useEffect(() => {
     changeTheme(theme);
   }, [theme]);
@@ -70,17 +79,7 @@ function Index() {
     <BrowserRouter>
       <ConfigProvider
         locale={getArcoLocale()}
-        componentConfig={{
-          Card: {
-            bordered: false,
-          },
-          List: {
-            bordered: false,
-          },
-          Table: {
-            border: false,
-          },
-        }}
+        componentConfig={componentConfig}
       >
         <Provider store={store}>
           <GlobalContext.Provider value={contextValue}>

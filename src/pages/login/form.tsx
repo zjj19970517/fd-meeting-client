@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   Form,
   Input,
@@ -6,15 +7,20 @@ import {
   Button,
   Space,
 } from '@arco-design/web-react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FormInstance } from '@arco-design/web-react/es/Form';
 import { IconLock, IconUser } from '@arco-design/web-react/icon';
-import React, { useEffect, useRef, useState } from 'react';
-import axios from 'axios';
+
 import useStorage from '@/utils/useStorage';
 import useLocale from '@/utils/useLocale';
 import locale from './locale';
-import styles from './style/index.module.less';
 
+import styles from './style/index.module.less';
+import userApi from '@/apis/userApi';
+
+/**
+ * @component 登录表单组件
+ */
 export default function LoginForm() {
   const formRef = useRef<FormInstance>();
   const [errorMessage, setErrorMessage] = useState('');
@@ -39,22 +45,26 @@ export default function LoginForm() {
     window.location.href = '/';
   }
 
-  function login(params) {
-    setErrorMessage('');
-    setLoading(true);
-    axios
-      .post('/api/user/login', params)
-      .then((res) => {
-        const { status, msg } = res.data;
-        if (status === 'ok') {
-          afterLoginSuccess(params);
-        } else {
-          setErrorMessage(msg || t['login.form.login.errMsg']);
-        }
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+  async function login(params) {
+    try {
+      console.log('登录参数', params);
+      setErrorMessage('');
+      setLoading(true);
+      // TODO: 发送真实请求
+      const res = await userApi.login(params.userName, params.password);
+      console.log('登录结果', res);
+      // const { status, msg } = res.data
+      //   if (status === "ok") {
+      //     afterLoginSuccess(params)
+      //   } else {
+      //     setErrorMessage(msg || t["login.form.login.errMsg"])
+      //   }
+    } catch (e) {
+      console.error('[Login] 登录异常', e);
+      // TODO: 可以异常上报等
+    } finally {
+      setLoading(false);
+    }
   }
 
   function onSubmitClick() {
@@ -76,9 +86,6 @@ export default function LoginForm() {
   return (
     <div className={styles['login-form-wrapper']}>
       <div className={styles['login-form-title']}>{t['login.form.title']}</div>
-      <div className={styles['login-form-sub-title']}>
-        {t['login.form.title']}
-      </div>
       <div className={styles['login-form-error-msg']}>{errorMessage}</div>
       <Form
         className={styles['login-form']}
@@ -113,15 +120,9 @@ export default function LoginForm() {
             </Checkbox>
             <Link>{t['login.form.forgetPassword']}</Link>
           </div>
+          {/* 登录按钮 */}
           <Button type="primary" long onClick={onSubmitClick} loading={loading}>
             {t['login.form.login']}
-          </Button>
-          <Button
-            type="text"
-            long
-            className={styles['login-form-register-btn']}
-          >
-            {t['login.form.register']}
           </Button>
         </Space>
       </Form>
