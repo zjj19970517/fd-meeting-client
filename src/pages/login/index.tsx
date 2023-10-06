@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 
 // resources
 import { appInfo } from '../../config/app.config';
+
 // components
 import Footer from '@/components/Footer';
 import LoginForm from './form';
 import LoginBanner from './banner';
+
 // styles
 import styles from './style/index.module.less';
 

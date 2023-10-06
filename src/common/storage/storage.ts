@@ -1,4 +1,4 @@
-import { encrypt, decrypt } from '../crypto';
+import { encrypt, decrypt } from '@/utils/crypto';
 
 interface globalConfig {
   type?: 'localStorage' | 'sessionStorage';

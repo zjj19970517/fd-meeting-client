@@ -1,3 +1,4 @@
+import React, { useEffect, useRef, useState } from 'react';
 import {
   Form,
   Input,
@@ -6,18 +7,20 @@ import {
   Button,
   Space,
 } from '@arco-design/web-react';
-import React, { useEffect, useRef, useState } from 'react';
 import { FormInstance } from '@arco-design/web-react/es/Form';
 import { IconLock, IconUser } from '@arco-design/web-react/icon';
 import { Notification } from '@arco-design/web-react';
 
+// hooks
 import useStorage from '@/utils/useStorage';
 import useLocale from '@/utils/useLocale';
 import locale from './locale';
 
-import styles from './style/index.module.less';
+// utils
 import userApi, { LoginResult } from '@/apis/userApi';
 import { loginModule } from '@/modules/login-module/login-module';
+
+import styles from './style/index.module.less';
 
 /**
  * @component 登录表单组件
@@ -28,9 +31,7 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false);
   const [loginParams, setLoginParams, removeLoginParams] =
     useStorage('loginParams');
-
   const t = useLocale(locale);
-
   const [rememberPassword, setRememberPassword] = useState(!!loginParams);
 
   function afterLoginSuccess(params, loginResult: LoginResult) {
