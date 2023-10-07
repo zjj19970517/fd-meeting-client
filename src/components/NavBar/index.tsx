@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, memo } from 'react';
 import {
   Tooltip,
   Input,
@@ -24,8 +24,8 @@ import {
   IconTag,
   IconLoading,
 } from '@arco-design/web-react/icon';
-import { useSelector, useDispatch } from 'react-redux';
-import { GlobalState } from '@/store';
+import { useSelector } from 'react-redux';
+// import { GlobalState } from '@/store';
 import { GlobalContext } from '@/context';
 import useLocale from '@/utils/useLocale';
 import Logo from '@/assets/logo.svg';
@@ -36,11 +36,12 @@ import styles from './style/index.module.less';
 import defaultLocale from '@/locale';
 import useStorage from '@/utils/useStorage';
 import { generatePermission } from '@/routes';
+import { appInfo } from '@/config/app.config';
 
 function Navbar({ show }: { show: boolean }) {
   const t = useLocale();
-  const { userInfo, userLoading } = useSelector((state: GlobalState) => state);
-  const dispatch = useDispatch();
+  const { userInfo, hasLoaded } = useSelector((state) => state.user);
+  console.log('用户信息', userInfo, hasLoaded);
 
   const [_, setUserStatus] = useStorage('userStatus');
   const [role, setRole] = useStorage('userRole', 'admin');
@@ -60,17 +61,17 @@ function Navbar({ show }: { show: boolean }) {
     }
   }
 
-  useEffect(() => {
-    dispatch({
-      type: 'update-userInfo',
-      payload: {
-        userInfo: {
-          ...userInfo,
-          permissions: generatePermission(role),
-        },
-      },
-    });
-  }, [role]);
+  // useEffect(() => {
+  //   dispatch({
+  //     type: 'update-userInfo',
+  //     payload: {
+  //       userInfo: {
+  //         ...userInfo,
+  //         permissions: generatePermission(role),
+  //       },
+  //     },
+  //   });
+  // }, [role]);
 
   if (!show) {
     return (
@@ -89,6 +90,7 @@ function Navbar({ show }: { show: boolean }) {
     setRole(newRole);
   };
 
+  // 个人中心的菜单
   const droplist = (
     <Menu onClickMenuItem={onMenuItemClick}>
       <Menu.SubMenu
@@ -145,7 +147,7 @@ function Navbar({ show }: { show: boolean }) {
       <div className={styles.left}>
         <div className={styles.logo}>
           <Logo />
-          <div className={styles['logo-name']}>Arco Pro</div>
+          <div className={styles['logo-name']}>{appInfo.name}</div>
         </div>
       </div>
       <ul className={styles.right}>
@@ -181,6 +183,7 @@ function Navbar({ show }: { show: boolean }) {
             <IconButton icon={<IconNotification />} />
           </MessageBox>
         </li>
+        {/* 主题切换 */}
         <li>
           <Tooltip
             content={
@@ -195,12 +198,14 @@ function Navbar({ show }: { show: boolean }) {
             />
           </Tooltip>
         </li>
+        {/* 设置 */}
         <Settings />
+        {/* 个人信息 */}
         {userInfo && (
           <li>
-            <Dropdown droplist={droplist} position="br" disabled={userLoading}>
+            <Dropdown droplist={droplist} position="br" disabled={!hasLoaded}>
               <Avatar size={32} style={{ cursor: 'pointer' }}>
-                {userLoading ? (
+                {!hasLoaded ? (
                   <IconLoading />
                 ) : (
                   <img alt="avatar" src={userInfo.avatar} />
@@ -214,4 +219,4 @@ function Navbar({ show }: { show: boolean }) {
   );
 }
 
-export default Navbar;
+export default memo(Navbar);
