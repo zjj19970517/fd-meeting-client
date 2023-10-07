@@ -2,18 +2,24 @@ import { post } from '@/common/fetch';
 import { StandardResponse } from '@/common/fetch/types';
 
 export interface LoginResult {
+  accessToken: string;
+  refreshToken: string;
+}
+
+export interface UserInfoResult {
   userInfo: {
-    id: number;
-    username: number;
-    roles: Array<string>;
+    nickName: string;
+    email: string;
+    avatar: string;
+    isFrozen: boolean;
+    isAdmin: boolean;
+    roles: string[];
     permissions: Array<{
       id: number;
       code: string;
       description: string;
     }>;
   };
-  accessToken: string;
-  refreshToken: string;
 }
 
 /**
@@ -27,13 +33,17 @@ const userApi = {
    * @returns
    */
   login(username, password) {
-    // const config: CustomConfig = {
-    //   closeAutoErrorTip: false
-    // }
     return post<StandardResponse<LoginResult>>('/api/user/login', {
       username,
       password,
     });
+  },
+  /**
+   * 获取用户信息
+   * @returns
+   */
+  getUserInfo() {
+    return post<StandardResponse<UserInfoResult>>('/api/user/info');
   },
 };
 
