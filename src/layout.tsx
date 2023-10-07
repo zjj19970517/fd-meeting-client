@@ -24,8 +24,8 @@ import { isArray } from './utils/is';
 import useLocale from './utils/useLocale';
 import getUrlParams from './utils/getUrlParams';
 import lazyload from './utils/lazyload';
-import { GlobalState } from './store';
 import styles from './style/layout.module.less';
+import settingConfig from './settings.json';
 
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -89,11 +89,11 @@ function PageLayout() {
   const pathname = history.location.pathname;
   const currentComponent = qs.parseUrl(pathname).url.slice(1);
   const locale = useLocale();
-  const { settings, userLoading, userInfo } = useSelector(
-    (state: GlobalState) => state
-  );
 
-  const [routes, defaultRoute] = useRoute(userInfo?.permissions);
+  const userLoading = false;
+  const settings = settingConfig;
+
+  const [routes, defaultRoute] = useRoute([]);
   const defaultSelectedKeys = [currentComponent || defaultRoute];
   const paths = (currentComponent || defaultRoute).split('/');
   const defaultOpenKeys = paths.slice(0, paths.length - 1);
