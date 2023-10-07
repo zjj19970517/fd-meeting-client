@@ -8,7 +8,6 @@ export const loginModule = {
    */
   login(data: LoginResult) {
     loginStorage.setItem(LoginStorageKeys.LOGIN_STATUS, '1');
-    loginStorage.setItem(LoginStorageKeys.USER_INFO, data.userInfo);
     loginStorage.setItem(LoginStorageKeys.TOKEN, data.accessToken);
     loginStorage.setItem(LoginStorageKeys.REFRESH_TOKEN, data.refreshToken);
     window.location.href = '/';
@@ -18,7 +17,6 @@ export const loginModule = {
    */
   unLogin() {
     loginStorage.remove(LoginStorageKeys.LOGIN_STATUS);
-    loginStorage.remove(LoginStorageKeys.USER_INFO);
     loginStorage.remove(LoginStorageKeys.TOKEN);
     loginStorage.remove(LoginStorageKeys.REFRESH_TOKEN);
     window.location.href = '/login';
