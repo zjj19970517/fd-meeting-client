@@ -1,7 +1,6 @@
-import axios from 'axios';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+import { Provider, useDispatch } from 'react-redux';
+
 import React, { useEffect } from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ConfigProvider } from '@arco-design/web-react';
@@ -9,7 +8,7 @@ import zhCN from '@arco-design/web-react/es/locale/zh-CN';
 import enUS from '@arco-design/web-react/es/locale/en-US';
 
 // store & context
-import rootReducer from './store';
+import store from './store';
 import { GlobalContext } from './context';
 // component
 import PageLayout from './layout';
@@ -21,12 +20,12 @@ import useStorage from './utils/useStorage';
 import './style/global.less';
 import './mock';
 import { loginModule } from './modules/login-module/login-module';
-
-const store = createStore(rootReducer);
+import { getUserInfoAction } from './store/userSlice';
 
 function Index() {
   const [lang, setLang] = useStorage('arco-lang', 'en-US');
   const [theme, setTheme] = useStorage('arco-theme', 'light');
+  const dispatch = useDispatch();
 
   function getArcoLocale() {
     switch (lang) {
@@ -41,23 +40,13 @@ function Index() {
 
   // 获取用户信息
   function fetchUserInfo() {
-    // TODO:
-    store.dispatch({
-      type: 'update-userInfo',
-      payload: { userLoading: true },
-    });
-    axios.get('/api/user/userInfo').then((res) => {
-      store.dispatch({
-        type: 'update-userInfo',
-        payload: { userInfo: res.data, userLoading: false },
-      });
-    });
+    dispatch(getUserInfoAction());
   }
 
   // 登录校验
   useEffect(() => {
     if (loginModule.checkLogin()) {
-      // fetchUserInfo()
+      fetchUserInfo();
     } else if (window.location.pathname.replace(/\//g, '') !== 'login') {
       window.location.pathname = '/login';
     }
@@ -81,17 +70,20 @@ function Index() {
         locale={getArcoLocale()}
         componentConfig={componentConfig}
       >
-        <Provider store={store}>
-          <GlobalContext.Provider value={contextValue}>
-            <Switch>
-              <Route path="/login" component={Login} />
-              <Route path="/" component={PageLayout} />
-            </Switch>
-          </GlobalContext.Provider>
-        </Provider>
+        <GlobalContext.Provider value={contextValue}>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/" component={PageLayout} />
+          </Switch>
+        </GlobalContext.Provider>
       </ConfigProvider>
     </BrowserRouter>
   );
 }
 
-ReactDOM.render(<Index />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <Index />
+  </Provider>,
+  document.getElementById('root')
+);
