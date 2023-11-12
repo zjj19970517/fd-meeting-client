@@ -38,7 +38,8 @@ import useStorage from '@/utils/useStorage';
 import { generatePermission } from '@/routes';
 import { appInfo } from '@/config/app.config';
 
-function Navbar({ show }: { show: boolean }) {
+/** 导航条组件 */
+function Navbar({ show }: { show?: boolean }) {
   const t = useLocale();
   const { userInfo, hasLoaded } = useSelector((state) => state.user);
   console.log('用户信息', userInfo, hasLoaded);
@@ -61,19 +62,7 @@ function Navbar({ show }: { show: boolean }) {
     }
   }
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: 'update-userInfo',
-  //     payload: {
-  //       userInfo: {
-  //         ...userInfo,
-  //         permissions: generatePermission(role),
-  //       },
-  //     },
-  //   });
-  // }, [role]);
-
-  if (!show) {
+  if (show) {
     return (
       <div className={styles['fixed-settings']}>
         <Settings

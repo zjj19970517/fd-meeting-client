@@ -23,9 +23,18 @@ dependencies:
   '@loadable/component':
     specifier: ^5.13.2
     version: registry.npmmirror.com/@loadable/component@5.15.3(react@17.0.2)
+  '@reduxjs/toolkit':
+    specifier: ^1.9.7
+    version: registry.npmmirror.com/@reduxjs/toolkit@1.9.7(react-redux@7.2.9)(react@17.0.2)
   '@turf/turf':
     specifier: ^6.5.0
     version: registry.npmmirror.com/@turf/turf@6.5.0
+  '@types/node':
+    specifier: ^20.9.0
+    version: registry.npmmirror.com/@types/node@20.9.0
+  '@types/react-redux':
+    specifier: ^7.1.30
+    version: registry.npmmirror.com/@types/react-redux@7.1.30
   arco-design-pro:
     specifier: ^2.8.0
     version: registry.npmmirror.com/arco-design-pro@2.8.0
@@ -69,7 +78,7 @@ dependencies:
     specifier: ^17.0.2
     version: registry.npmmirror.com/react-dom@17.0.2(react@17.0.2)
   react-redux:
-    specifier: ^7.2.6
+    specifier: ^7.2.9
     version: registry.npmmirror.com/react-redux@7.2.9(react-dom@17.0.2)(react@17.0.2)
   react-router:
     specifier: ^5.2.0
@@ -142,6 +151,9 @@ devDependencies:
   pretty-quick:
     specifier: ^3.1.2
     version: registry.npmmirror.com/pretty-quick@3.1.3(prettier@2.8.8)
+  redux-devtools:
+    specifier: ^3.7.0
+    version: registry.npmmirror.com/redux-devtools@3.7.0(react-redux@7.2.9)(react@17.0.2)(redux@4.2.1)
   stylelint:
     specifier: ^14.1.0
     version: registry.npmmirror.com/stylelint@14.16.1
@@ -3119,6 +3131,33 @@ packages:
       fastq: registry.npmmirror.com/fastq@1.15.0
     dev: true
 
+  registry.npmmirror.com/@reduxjs/toolkit@1.9.7(react-redux@7.2.9)(react@17.0.2):
+    resolution:
+      {
+        integrity: sha512-t7v8ZPxhhKgOKtU+uyJT13lu4vL7az5aFi4IdoDs/eS548edn2M8Ik9h8fxgvMjGoAUVFSt6ZC1P5cWmQ014QQ==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/@reduxjs/toolkit/-/toolkit-1.9.7.tgz,
+      }
+    id: registry.npmmirror.com/@reduxjs/toolkit/1.9.7
+    name: '@reduxjs/toolkit'
+    version: 1.9.7
+    peerDependencies:
+      react: ^16.9.0 || ^17.0.0 || ^18
+      react-redux: ^7.2.1 || ^8.0.2
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-redux:
+        optional: true
+    dependencies:
+      immer: registry.npmmirror.com/immer@9.0.21
+      react: registry.npmmirror.com/react@17.0.2
+      react-redux: registry.npmmirror.com/react-redux@7.2.9(react-dom@17.0.2)(react@17.0.2)
+      redux: registry.npmmirror.com/redux@4.2.1
+      redux-thunk: registry.npmmirror.com/redux-thunk@2.4.2(redux@4.2.1)
+      reselect: registry.npmmirror.com/reselect@4.1.8
+    dev: false
+
   registry.npmmirror.com/@rollup/pluginutils@4.2.1:
     resolution:
       {
@@ -5412,7 +5451,6 @@ packages:
     dependencies:
       '@types/react': registry.npmmirror.com/@types/react@17.0.66
       hoist-non-react-statics: registry.npmmirror.com/hoist-non-react-statics@3.3.2
-    dev: false
 
   registry.npmmirror.com/@types/json-schema@7.0.13:
     resolution:
@@ -5468,6 +5506,19 @@ packages:
     name: '@types/node'
     version: 20.7.1
     dev: true
+
+  registry.npmmirror.com/@types/node@20.9.0:
+    resolution:
+      {
+        integrity: sha512-nekiGu2NDb1BcVofVcEKMIwzlx4NjHlcjhoxxKBNLtz15Y1z7MYf549DFvkHSId02Ax6kGwWntIBPC3l/JZcmw==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/@types/node/-/node-20.9.0.tgz,
+      }
+    name: '@types/node'
+    version: 20.9.0
+    dependencies:
+      undici-types: registry.npmmirror.com/undici-types@5.26.5
+    dev: false
 
   registry.npmmirror.com/@types/normalize-package-data@2.4.2:
     resolution:
@@ -5525,21 +5576,20 @@ packages:
       '@types/react': registry.npmmirror.com/@types/react@17.0.66
     dev: true
 
-  registry.npmmirror.com/@types/react-redux@7.1.27:
+  registry.npmmirror.com/@types/react-redux@7.1.30:
     resolution:
       {
-        integrity: sha512-xj7d9z32p1K/eBmO+OEy+qfaWXtcPlN8f1Xk3Ne0p/ZRQ867RI5bQ/bpBtxbqU1AHNhKJSgGvld/P2myU2uYkg==,
+        integrity: sha512-i2kqM6YaUwFKduamV6QM/uHbb0eCP8f8ZQ/0yWf+BsAVVsZPRYJ9eeGWZ3uxLfWwwA0SrPRMTPTqsPFkY3HZdA==,
         registry: https://registry.npm.taobao.org/,
-        tarball: https://registry.npmmirror.com/@types/react-redux/-/react-redux-7.1.27.tgz,
+        tarball: https://registry.npmmirror.com/@types/react-redux/-/react-redux-7.1.30.tgz,
       }
     name: '@types/react-redux'
-    version: 7.1.27
+    version: 7.1.30
     dependencies:
       '@types/hoist-non-react-statics': registry.npmmirror.com/@types/hoist-non-react-statics@3.3.2
       '@types/react': registry.npmmirror.com/@types/react@17.0.66
       hoist-non-react-statics: registry.npmmirror.com/hoist-non-react-statics@3.3.2
       redux: registry.npmmirror.com/redux@4.2.1
-    dev: false
 
   registry.npmmirror.com/@types/react@17.0.66:
     resolution:
@@ -9714,7 +9764,6 @@ packages:
     version: 3.3.2
     dependencies:
       react-is: registry.npmmirror.com/react-is@16.13.1
-    dev: false
 
   registry.npmmirror.com/hosted-git-info@2.8.9:
     resolution:
@@ -9834,6 +9883,17 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  registry.npmmirror.com/immer@9.0.21:
+    resolution:
+      {
+        integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/immer/-/immer-9.0.21.tgz,
+      }
+    name: immer
+    version: 9.0.21
+    dev: false
 
   registry.npmmirror.com/import-fresh@3.3.0:
     resolution:
@@ -12284,7 +12344,6 @@ packages:
       object-assign: registry.npmmirror.com/object-assign@4.1.1
       react: registry.npmmirror.com/react@17.0.2
       scheduler: registry.npmmirror.com/scheduler@0.20.2
-    dev: false
 
   registry.npmmirror.com/react-error-boundary@3.0.2(react@17.0.2):
     resolution:
@@ -12350,7 +12409,6 @@ packages:
       }
     name: react-is
     version: 17.0.2
-    dev: false
 
   registry.npmmirror.com/react-reconciler@0.25.1(react@17.0.2):
     resolution:
@@ -12394,14 +12452,13 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.23.1
-      '@types/react-redux': registry.npmmirror.com/@types/react-redux@7.1.27
+      '@types/react-redux': registry.npmmirror.com/@types/react-redux@7.1.30
       hoist-non-react-statics: registry.npmmirror.com/hoist-non-react-statics@3.3.2
       loose-envify: registry.npmmirror.com/loose-envify@1.4.0
       prop-types: registry.npmmirror.com/prop-types@15.8.1
       react: registry.npmmirror.com/react@17.0.2
       react-dom: registry.npmmirror.com/react-dom@17.0.2(react@17.0.2)
       react-is: registry.npmmirror.com/react-is@17.0.2
-    dev: false
 
   registry.npmmirror.com/react-refresh@0.13.0:
     resolution:
@@ -12498,7 +12555,6 @@ packages:
     dependencies:
       loose-envify: registry.npmmirror.com/loose-envify@1.4.0
       object-assign: registry.npmmirror.com/object-assign@4.1.1
-    dev: false
 
   registry.npmmirror.com/reactcss@1.2.3(react@17.0.2):
     resolution:
@@ -12565,6 +12621,66 @@ packages:
       strip-indent: registry.npmmirror.com/strip-indent@3.0.0
     dev: true
 
+  registry.npmmirror.com/redux-devtools-instrument@1.10.0(redux@4.2.1):
+    resolution:
+      {
+        integrity: sha512-X8JRBCzX2ADSMp+iiV7YQ8uoTNyEm0VPFPd4T854coz6lvRiBrFSqAr9YAS2n8Kzxx8CJQotR0QF9wsMM+3DvA==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/redux-devtools-instrument/-/redux-devtools-instrument-1.10.0.tgz,
+      }
+    id: registry.npmmirror.com/redux-devtools-instrument/1.10.0
+    name: redux-devtools-instrument
+    version: 1.10.0
+    deprecated: Package moved to @redux-devtools/instrument.
+    peerDependencies:
+      redux: ^3.4.0 || ^4.0.0
+    dependencies:
+      lodash: registry.npmmirror.com/lodash@4.17.21
+      redux: registry.npmmirror.com/redux@4.2.1
+      symbol-observable: registry.npmmirror.com/symbol-observable@1.2.0
+    dev: true
+
+  registry.npmmirror.com/redux-devtools@3.7.0(react-redux@7.2.9)(react@17.0.2)(redux@4.2.1):
+    resolution:
+      {
+        integrity: sha512-Lnx3UX7mnJij2Xs+RicPK1GyKkbuodrCKtfYmJsN603wC0mc99W//xCAskGVNmRhIXg4e57m2k1CyX0kVzCsBg==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/redux-devtools/-/redux-devtools-3.7.0.tgz,
+      }
+    id: registry.npmmirror.com/redux-devtools/3.7.0
+    name: redux-devtools
+    version: 3.7.0
+    deprecated: Package moved to @redux-devtools/core.
+    peerDependencies:
+      react: ^0.14.9 || ^15.3.0 || ^16.0.0
+      react-redux: ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0
+      redux: ^3.5.2 || ^4.0.0
+    dependencies:
+      '@types/prop-types': registry.npmmirror.com/@types/prop-types@15.7.7
+      lodash: registry.npmmirror.com/lodash@4.17.21
+      prop-types: registry.npmmirror.com/prop-types@15.8.1
+      react: registry.npmmirror.com/react@17.0.2
+      react-redux: registry.npmmirror.com/react-redux@7.2.9(react-dom@17.0.2)(react@17.0.2)
+      redux: registry.npmmirror.com/redux@4.2.1
+      redux-devtools-instrument: registry.npmmirror.com/redux-devtools-instrument@1.10.0(redux@4.2.1)
+    dev: true
+
+  registry.npmmirror.com/redux-thunk@2.4.2(redux@4.2.1):
+    resolution:
+      {
+        integrity: sha512-+P3TjtnP0k/FEjcBL5FZpoovtvrTNT/UXd4/sluaSyrURlSlhLSzEdfsTBW7WsKB6yPvgd7q/iZPICFjW4o57Q==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/redux-thunk/-/redux-thunk-2.4.2.tgz,
+      }
+    id: registry.npmmirror.com/redux-thunk/2.4.2
+    name: redux-thunk
+    version: 2.4.2
+    peerDependencies:
+      redux: ^4
+    dependencies:
+      redux: registry.npmmirror.com/redux@4.2.1
+    dev: false
+
   registry.npmmirror.com/redux@4.2.1:
     resolution:
       {
@@ -12576,7 +12692,6 @@ packages:
     version: 4.2.1
     dependencies:
       '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.23.1
-    dev: false
 
   registry.npmmirror.com/reflect.getprototypeof@1.0.4:
     resolution:
@@ -12727,6 +12842,17 @@ packages:
     version: 2.0.2
     engines: { node: '>=0.10.0' }
     dev: true
+
+  registry.npmmirror.com/reselect@4.1.8:
+    resolution:
+      {
+        integrity: sha512-ab9EmR80F/zQTMNeneUr4cv+jSwPJgIlvEmVwLerwrWVbpLlBuls9XHzIeTFy4cegU2NHBp3va0LKOzU5qFEYQ==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/reselect/-/reselect-4.1.8.tgz,
+      }
+    name: reselect
+    version: 4.1.8
+    dev: false
 
   registry.npmmirror.com/resize-observer-polyfill@1.5.1:
     resolution:
@@ -13012,7 +13138,6 @@ packages:
     dependencies:
       loose-envify: registry.npmmirror.com/loose-envify@1.4.0
       object-assign: registry.npmmirror.com/object-assign@4.1.1
-    dev: false
 
   registry.npmmirror.com/schema-utils@3.3.0:
     resolution:
@@ -13821,6 +13946,18 @@ packages:
       util.promisify: registry.npmmirror.com/util.promisify@1.0.1
     dev: true
 
+  registry.npmmirror.com/symbol-observable@1.2.0:
+    resolution:
+      {
+        integrity: sha512-e900nM8RRtGhlV36KGEU9k65K3mPb1WV70OdjfxlG2EAuM1noi/E/BaW/uMhL7bPEssK8QV57vN3esixjUvcXQ==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/symbol-observable/-/symbol-observable-1.2.0.tgz,
+      }
+    name: symbol-observable
+    version: 1.2.0
+    engines: { node: '>=0.10.0' }
+    dev: true
+
   registry.npmmirror.com/table@6.8.1:
     resolution:
       {
@@ -14292,6 +14429,17 @@ packages:
       has-bigints: registry.npmmirror.com/has-bigints@1.0.2
       has-symbols: registry.npmmirror.com/has-symbols@1.0.3
       which-boxed-primitive: registry.npmmirror.com/which-boxed-primitive@1.0.2
+
+  registry.npmmirror.com/undici-types@5.26.5:
+    resolution:
+      {
+        integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==,
+        registry: https://registry.npm.taobao.org/,
+        tarball: https://registry.npmmirror.com/undici-types/-/undici-types-5.26.5.tgz,
+      }
+    name: undici-types
+    version: 5.26.5
+    dev: false
 
   registry.npmmirror.com/unicode-canonical-property-names-ecmascript@2.0.0:
     resolution:

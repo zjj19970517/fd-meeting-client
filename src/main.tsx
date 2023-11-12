@@ -11,7 +11,7 @@ import enUS from '@arco-design/web-react/es/locale/en-US';
 import store from './store';
 import { GlobalContext } from './context';
 // component
-import PageLayout from './layout';
+import PageLayout from '@/components/page-layout/PageLayout';
 import Login from './pages/login';
 // tools
 import changeTheme from './utils/changeTheme';
@@ -20,7 +20,7 @@ import useStorage from './utils/useStorage';
 import './style/global.less';
 import './mock';
 import { loginModule } from './modules/login-module/login-module';
-import { getUserInfoAction } from './store/userSlice';
+import { getUserInfoAction } from './store/slices/user-slice';
 
 function Index() {
   const [lang, setLang] = useStorage('arco-lang', 'en-US');

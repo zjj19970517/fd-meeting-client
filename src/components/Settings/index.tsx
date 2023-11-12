@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { GlobalState } from '../../store';
 import Block from './block';
 import ColorPanel from './color';
-import IconButton from '../NavBar/IconButton';
+import IconButton from '../nav-bar/IconButton';
 import useLocale from '@/utils/useLocale';
 
 interface SettingProps {
