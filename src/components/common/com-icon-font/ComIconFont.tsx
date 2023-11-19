@@ -4,7 +4,7 @@ import { Icon } from '@arco-design/web-react';
 // https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=4326411
 // https://www.iconfont.cn/collections/detail?spm=a313x.user_detail.i1.dc64b3430.60383a817CJ8l8&cid=11607
 const ComIconFont = Icon.addFromIconFontCn({
-  src: '//at.alicdn.com/t/c/font_4326411_xfk9br45hiq.js',
+  src: '//at.alicdn.com/t/c/font_4326411_5wqjdhtg73p.js',
 });
 
 export default ComIconFont;
