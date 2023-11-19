@@ -1,33 +1,41 @@
 import React, { memo, useMemo } from 'react';
+import { useHistory } from 'react-router-dom';
 
-// hooks
-import { useDispatch, useSelector } from '@/store/hooks';
+// hooks & tools
+import { useSelector } from '@/store/hooks';
+import { getFlattenMenusMap } from '../menu-list/get-flatten-menus';
+import { getActiveMenuKeys } from '@/utils/business/get-active-menu-keys';
 
 // components
 import ComIcon from '@/components/common/com-icon/ComIcon';
 
 // interfaces
-import { MenuItem } from '@/common/interfaces/MenusList';
+import { MenuItem } from '@/common/interfaces/menus-list';
 import { SideBarPropsType } from './props-type';
-
-import { updateActiveMenuOfFirst } from '@/store/slices/menu-slice';
 
 // resources
 import styles from './style.module.less';
 
 /** @component 侧边栏 */
 const Sidebar: React.FC<SideBarPropsType> = () => {
+  const history = useHistory();
   const { menusList, activeMenu } = useSelector((state) => state.menu);
-  const dispatch = useDispatch();
+  // 扁平化所有菜单
+  const flattenMenusMap = useMemo(
+    () => getFlattenMenusMap(menusList) || {},
+    [menusList]
+  );
 
   /** 获取激活的第一级菜单 key */
   const activeMenuKey = useMemo(() => {
-    return menusList.find((menu) => menu.key === activeMenu[0]).key;
+    return menusList.find((menu) => menu.key === activeMenu[0])?.key;
   }, [activeMenu, menusList]);
 
   /** 第一级菜单点击事件处理 */
   const onClickMenuItem = (menu: MenuItem) => {
-    dispatch(updateActiveMenuOfFirst(menu.key));
+    const keys = getActiveMenuKeys(menu, true);
+    const targetMenuItem = flattenMenusMap[keys[keys.length - 1]];
+    targetMenuItem && history.push(targetMenuItem.routeUrl);
   };
 
   return (
@@ -51,8 +59,8 @@ const Sidebar: React.FC<SideBarPropsType> = () => {
                 <ComIcon
                   className={styles.menu_item_icon}
                   url={menu.icon}
-                  width={24}
-                  height={24}
+                  width={22}
+                  height={22}
                 />
               ) : null}
               <span className={styles.menu_item_name}>{menu.name}</span>
