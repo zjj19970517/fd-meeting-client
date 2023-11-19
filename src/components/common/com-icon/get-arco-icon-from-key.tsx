@@ -5,6 +5,7 @@ import {
   IconTool,
   IconMindMapping,
   IconDashboard,
+  IconApps,
 } from '@arco-design/web-react/icon';
 
 /**
@@ -28,6 +29,8 @@ export function getArcoIconFromKey(
       return <IconTool className={className} style={style} />;
     case 'IconDashboard':
       return <IconDashboard className={className} style={style} />;
+    case 'IconApps':
+      return <IconApps className={className} style={style} />;
     default:
       return (
         <div

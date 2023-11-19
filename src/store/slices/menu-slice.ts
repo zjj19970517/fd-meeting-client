@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-import routeApi from '@/apis/routeApi';
+import routeApi from '@/apis/route.api';
 import { MenusList } from '@/common/interfaces/menus-list';
 import { getActiveMenuKeys } from '@/utils/business/get-active-menu-keys';
 

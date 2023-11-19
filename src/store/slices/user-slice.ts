@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import userApi from '@/apis/userApi';
+import userApi from '@/apis/user.api';
 
 export interface UserInfo {
   nickName: string;

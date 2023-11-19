@@ -17,7 +17,7 @@ import useLocale from '@/utils/useLocale';
 import locale from './locale';
 
 // utils
-import userApi, { LoginResult } from '@/apis/userApi';
+import userApi, { LoginResult } from '@/apis/user.api';
 import { loginModule } from '@/modules/login-module/login-module';
 
 import styles from './style/index.module.less';

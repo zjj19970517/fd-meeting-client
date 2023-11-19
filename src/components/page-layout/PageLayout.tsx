@@ -19,8 +19,6 @@ const PageLayoutContainer: React.FC<PageLayoutContainerPropsType> = () => {
 
   const hasLoaded = menuLoaded && userLoaded;
 
-  console.log('加载完毕', hasLoaded);
-
   if (!hasLoaded) {
     return <Spin size={40} className={styles['spin']} />;
   }

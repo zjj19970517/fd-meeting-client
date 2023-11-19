@@ -1,5 +1,5 @@
 import { LoginStorageKeys, loginStorage } from '@/common/storage';
-import { LoginResult } from '@/apis/userApi';
+import { LoginResult } from '@/apis/user.api';
 
 export const loginModule = {
   /**
