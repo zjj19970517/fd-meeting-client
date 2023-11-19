@@ -5,7 +5,7 @@ import ComIconFont from '@/components/common/com-icon-font/ComIconFont';
 import { getArcoIconFromKey } from './get-arco-icon-from-key';
 import { getSvgIconFromKey } from './get-svg-icon-from-key';
 
-import { BaseTypeProps } from '@/common/interfaces/BaseTypeProps';
+import { BaseTypeProps } from '@/common/interfaces/base-type-props';
 import { ResourceExtType, getResourceExt } from './get-resource-type';
 
 interface ComIconPropsType extends BaseTypeProps {
@@ -31,6 +31,7 @@ const ComIcon: React.FC<ComIconPropsType> = (props) => {
     ...{
       width: props.width ? props.width + 'px' : '24px',
       height: props.height ? props.height + 'px' : '24px',
+      fontSize: props.height ? props.height + 'px' : '24px',
     },
   };
 
@@ -41,13 +42,13 @@ const ComIcon: React.FC<ComIconPropsType> = (props) => {
   } else if (type === ResourceExtType.IMG) {
     return <img src={props.url} className={className} style={_style} alt="" />;
   } else if (type === ResourceExtType.ARCO_ICON) {
-    const IconComponent = getArcoIconFromKey(props.url, className, style);
+    const IconComponent = getArcoIconFromKey(props.url, className, _style);
     return IconComponent;
   } else if (type === ResourceExtType.SVG) {
-    const IconComponent = getSvgIconFromKey(props.url, className, style);
+    const IconComponent = getSvgIconFromKey(props.url, className, _style);
     return IconComponent;
   }
-  console.error('Unknown Icon Type');
+  // console.error('Unknown Icon Type');
   return null;
 };
 
