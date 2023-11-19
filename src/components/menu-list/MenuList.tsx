@@ -15,8 +15,10 @@ import { useSelector, useDispatch } from '@/store/hooks';
 import { updateActiveMenuOfFirst } from '@/store/slices/menu-slice';
 
 // interfaces
-import type { MenuListPropsType } from './props-type';
 import type { MenuItem as IMenuItem } from '@/common/interfaces/menus-list';
+import { BaseTypeProps } from '@/common/interfaces/base-type-props';
+
+export type MenuListPropsType = BaseTypeProps;
 
 import styles from './style.module.less';
 
