@@ -1,56 +1,53 @@
-import ReactDOM from 'react-dom';
-import { Provider, useDispatch } from 'react-redux';
-
 import React, { useEffect } from 'react';
+import ReactDOM from 'react-dom';
+import { useMount } from 'ahooks';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { ConfigProvider } from '@arco-design/web-react';
-import zhCN from '@arco-design/web-react/es/locale/zh-CN';
-import enUS from '@arco-design/web-react/es/locale/en-US';
 
 // store & context
-import store from './store';
-import { GlobalContext } from './context';
+import store from '@/store';
+import { useDispatch } from '@/store/hooks';
+import { GlobalContext } from '@/context';
+import { getMenusListAction } from '@/store/slices/menu-slice';
+
 // component
 import PageLayout from '@/components/page-layout/PageLayout';
-import Login from './pages/login';
-// tools
-import changeTheme from './utils/changeTheme';
-import { componentConfig } from './config/component.config';
-import useStorage from './utils/useStorage';
+import PageLogin from '@/pages/login';
+
+// tools & Hooks
+import changeTheme from '@/utils/changeTheme';
+import useStorage from '@/utils/useStorage';
+import { getArcoLocale } from '@/locale/get-arco-locale';
+
+// resources
+import { componentConfig } from '@/config/component.config';
 import './style/global.less';
 import './mock';
-import { loginModule } from './modules/login-module/login-module';
-import { getUserInfoAction } from './store/slices/user-slice';
 
 function Index() {
-  const [lang, setLang] = useStorage('arco-lang', 'en-US');
+  const [lang, setLang] = useStorage('arco-lang', 'zh-CN');
   const [theme, setTheme] = useStorage('arco-theme', 'light');
   const dispatch = useDispatch();
 
-  function getArcoLocale() {
-    switch (lang) {
-      case 'zh-CN':
-        return zhCN;
-      case 'en-US':
-        return enUS;
-      default:
-        return zhCN;
-    }
+  useMount(() => {
+    checkLogin();
+    getMenusList();
+  });
+
+  /** 获取菜单列表 */
+  function getMenusList() {
+    dispatch(getMenusListAction());
   }
 
-  // 获取用户信息
-  function fetchUserInfo() {
-    dispatch(getUserInfoAction());
+  /** 校验登录态 */
+  function checkLogin() {
+    // if (loginModule.checkLogin()) {
+    //   fetchUserInfo();
+    // } else if (window.location.pathname.replace(/\//g, '') !== 'login') {
+    //   window.location.pathname = '/login';
+    // }
   }
-
-  // 登录校验
-  useEffect(() => {
-    if (loginModule.checkLogin()) {
-      fetchUserInfo();
-    } else if (window.location.pathname.replace(/\//g, '') !== 'login') {
-      window.location.pathname = '/login';
-    }
-  }, []);
 
   // 主题切换
   useEffect(() => {
@@ -67,12 +64,12 @@ function Index() {
   return (
     <BrowserRouter>
       <ConfigProvider
-        locale={getArcoLocale()}
+        locale={getArcoLocale(lang)}
         componentConfig={componentConfig}
       >
         <GlobalContext.Provider value={contextValue}>
           <Switch>
-            <Route path="/login" component={Login} />
+            <Route path="/login" component={PageLogin} />
             <Route path="/" component={PageLayout} />
           </Switch>
         </GlobalContext.Provider>
