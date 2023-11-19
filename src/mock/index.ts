@@ -3,6 +3,7 @@ import { isSSR } from '@/utils/is';
 
 import './user';
 import './message-box';
+import './route.mock';
 
 if (!isSSR) {
   Mock.setup({

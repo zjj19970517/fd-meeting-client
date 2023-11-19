@@ -27,7 +27,7 @@ export const userSlice = createSlice({
       email: '',
     },
     // 是否加载完毕
-    hasLoaded: false,
+    hasLoaded: true,
   },
   reducers: {
     // 更新用户信息

@@ -8,7 +8,7 @@ import { useSelector } from '@/store/hooks';
 import Sidebar from '@/components/sidebar/Sidebar';
 import NavBar from '@/components/nav-bar/NavBar';
 import MenuList from '@/components/menu-list/MenuList';
-import KeepAliveTabContent from '@/components/keep-alive-tab-content/KeepAliveContent';
+import KeepAliveTabContent from '@/components/keep-alive-tab-content/KeepAliveTabContent';
 
 import styles from './styles/style.module.less';
 
@@ -18,6 +18,8 @@ const PageLayoutContainer: React.FC<PageLayoutContainerPropsType> = () => {
   const { hasLoaded: userLoaded } = useSelector((state) => state.user);
 
   const hasLoaded = menuLoaded && userLoaded;
+
+  console.log('加载完毕', hasLoaded);
 
   if (!hasLoaded) {
     return <Spin size={40} className={styles['spin']} />;
