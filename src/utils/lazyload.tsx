@@ -7,7 +7,7 @@ import styles from '../style/layout.module.less';
 function load(fn, options) {
   const Component = loadable(fn, options);
 
-  Component.preload = fn.requireAsync || fn;
+  Component.preload = fn;
 
   return Component;
 }
