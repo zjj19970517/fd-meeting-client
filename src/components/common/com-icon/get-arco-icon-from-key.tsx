@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { IconLanguage } from '@arco-design/web-react/icon';
+import {
+  IconLanguage,
+  IconTool,
+  IconMindMapping,
+  IconDashboard,
+} from '@arco-design/web-react/icon';
 
 /**
  * 通过 key 获取 Arco Icon 组件
@@ -17,6 +22,12 @@ export function getArcoIconFromKey(
   switch (key) {
     case 'IconLanguage':
       return <IconLanguage className={className} style={style} />;
+    case 'IconMindMapping':
+      return <IconMindMapping className={className} style={style} />;
+    case 'IconTool':
+      return <IconTool className={className} style={style} />;
+    case 'IconDashboard':
+      return <IconDashboard className={className} style={style} />;
     default:
       return (
         <div
