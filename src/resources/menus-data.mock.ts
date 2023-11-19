@@ -1,4 +1,4 @@
-import { MenusList } from '@/common/interfaces/MenusList';
+import { MenusList } from '@/common/interfaces/menus-list';
 
 export const MenusListData: MenusList = [
   {
@@ -13,7 +13,23 @@ export const MenusListData: MenusList = [
     meta: {
       title: '主页',
     },
-    subMenus: [],
+    children: [
+      {
+        name: '工作台',
+        key: 'workplace',
+        icon: 'IconDashboard',
+        activeIcon: '',
+        hidden: false,
+        routeUrl: '',
+        routeName: 'workplace',
+        redirect: '',
+        componentPath: 'dashboard/workplace/index.tsx',
+        meta: {
+          title: '工作台',
+        },
+        children: [],
+      },
+    ],
   },
   {
     name: '资产',
@@ -27,10 +43,10 @@ export const MenusListData: MenusList = [
     meta: {
       title: '资产管理',
     },
-    subMenus: [
+    children: [
       {
         name: '用户管理',
-        icon: '',
+        icon: 'icon-me',
         key: 'userManage',
         activeIcon: '',
         hidden: false,
@@ -40,52 +56,99 @@ export const MenusListData: MenusList = [
         meta: {
           title: '用户管理',
         },
-        subMenus: [],
-      },
-    ],
-  },
-  {
-    name: '设置',
-    icon: 'icon-setting',
-    key: 'setting',
-    activeIcon: '',
-    hidden: false,
-    routeUrl: '',
-    routeName: '',
-    redirect: '',
-    meta: {
-      title: '设置',
-    },
-    subMenus: [
-      {
-        name: '导航管理',
-        key: 'routeManage',
-        icon: '',
-        activeIcon: '',
-        hidden: false,
-        routeUrl: '',
-        routeName: '',
-        redirect: '',
-        meta: {
-          title: '导航管理',
-        },
-        subMenus: [
+        children: [
           {
-            name: '导航列表',
-            key: 'routeList',
+            name: '用户管理',
+            key: 'normalUserManage',
+            icon: '',
+            activeIcon: '',
+            hidden: false,
+            routeName: 'normalUserManage',
+            routeUrl: '',
+            redirect: '',
+            componentPath: 'user-manage/user-manage/UserManage.tsx',
+            meta: {
+              title: '用户管理',
+            },
+            children: [],
+          },
+          {
+            name: '管理员管理',
+            key: 'adminUserManage',
             icon: '',
             activeIcon: '',
             hidden: false,
             routeUrl: '',
-            routeName: '',
+            routeName: 'adminUserManage',
             redirect: '',
+            componentPath: 'user-manage/admin-user-manage/AdminUserManage.tsx',
             meta: {
-              title: '导航列表',
+              title: '管理员管理',
             },
-            subMenus: [],
+            children: [],
+          },
+          {
+            name: '角色管理',
+            key: 'roleManage',
+            icon: '',
+            activeIcon: '',
+            hidden: false,
+            routeUrl: '',
+            routeName: 'roleManage',
+            redirect: '',
+            componentPath: 'user-manage/role-manage/RoleManage.tsx',
+            meta: {
+              title: '角色管理',
+            },
+            children: [],
           },
         ],
       },
     ],
   },
+  // {
+  //   name: '设置',
+  //   icon: 'icon-setting',
+  //   key: 'setting',
+  //   activeIcon: '',
+  //   hidden: false,
+  //   routeUrl: 'setting',
+  //   routeName: '',
+  //   redirect: '',
+  //   meta: {
+  //     title: '设置',
+  //   },
+  //   children: [
+  //     {
+  //       name: '导航管理',
+  //       key: 'routeManage',
+  //       icon: 'IconTool',
+  //       activeIcon: '',
+  //       hidden: false,
+  //       routeUrl: 'routeManage',
+  //       routeName: '',
+  //       redirect: '',
+  //       meta: {
+  //         title: '导航管理',
+  //       },
+  //       children: [
+  //         {
+  //           name: '导航列表',
+  //           key: 'routeList',
+  //           icon: 'IconMindMapping',
+  //           activeIcon: '',
+  //           hidden: false,
+  //           routeUrl: 'routeList',
+  //           routeName: '',
+  //           redirect: '',
+  //           componentPath: 'route-manage/route-list/RouteList.tsx',
+  //           meta: {
+  //             title: '导航列表',
+  //           },
+  //           children: [],
+  //         },
+  //       ],
+  //     },
+  //   ],
+  // },
 ];
