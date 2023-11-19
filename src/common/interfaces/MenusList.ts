@@ -9,8 +9,10 @@ export interface MenuItem {
   routeUrl?: string; // 路由 url 路径
   routeName?: string; // 路由名称
   redirect?: string; // 重定向地址
+  componentPath?: string; // 组件路径，eg：login/index.tsx
+  component?: unknown; // 对应的组件
   meta: {
     title?: string; // 标题文案
   };
-  subMenus: Array<MenuItem>; // 子菜单列表
+  children: Array<MenuItem>; // 子菜单列表
 }
